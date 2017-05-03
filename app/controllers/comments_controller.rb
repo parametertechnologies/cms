@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  http_basic_authenticate_with name: "cms", password: "cms", only: [:edit, :destroy]
 
   # /articles/:article_id/comments/new
   def create

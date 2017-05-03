@@ -17,4 +17,10 @@ Enter it again: cms
 
 $ rails db:create
 $ rails db:migrate
+$ rails db:test:prepare
+```
+
+## Running Tests
+```
+$ bin/rails test
 ```
