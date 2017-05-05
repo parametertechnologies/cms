@@ -1,14 +1,12 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: "cms", password: "cms", only: [:edit, :destroy]
 
-  # /articles/:article_id/comments/new
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params)
     redirect_to article_path(@article)
   end
 
-  # /articles/:article_id/comments/:id/edit
   def edit
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
@@ -16,7 +14,6 @@ class CommentsController < ApplicationController
 
   end
 
-  # /articles/:article_id/comments/:id
   def update
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
@@ -27,7 +24,6 @@ class CommentsController < ApplicationController
 
   end
 
-  # /articles/:article_id/comments/:id
   def destroy
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])

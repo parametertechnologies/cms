@@ -41,10 +41,9 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should PATCH update' do
     patch article_url(@article), headers: @auth_headers,
       params: { article: { title: 'Updated' } }
+      
     assert_redirected_to article_path(@article)
-
-    @article.reload
-    assert_equal 'Updated', @article.title
+    assert_equal 'Updated', @article.reload.title
   end
 
   test 'should DELETE destroy' do
