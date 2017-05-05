@@ -46,4 +46,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @article.reload
     assert_equal 'Updated', @article.title
   end
+
+  test 'should DELETE destroy' do
+    assert_difference('Article.count', -1) do
+      delete article_url(@article), headers: @auth_headers
+    end
+
+  end
 end
