@@ -22,6 +22,11 @@ $ rails db:migrate
 $ rails db:test:prepare
 ```
 
+## Test Setup
+```
+$ brew install chromedriver
+```
+
 ## Running Tests
 ```
 $ bin/rails test
