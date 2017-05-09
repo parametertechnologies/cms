@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'welcome#index'
+  root 'home#index',  as: :home
+
 end

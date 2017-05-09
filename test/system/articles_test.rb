@@ -8,7 +8,6 @@ class ArticlesTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'MyString2'
   end
 
-
   test 'creating a new article' do
     basic_auth!
     visit articles_url
