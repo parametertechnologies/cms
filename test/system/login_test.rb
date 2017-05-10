@@ -6,12 +6,24 @@ class LoginTest < ApplicationSystemTestCase
     visit articles_url
     click_link 'Log in'
     assert_selector 'h2', text: 'Log in'
+    login_in_user
+    assert_selector 'div', text: 'Signed in successfully.'
+  end
 
+  test 'sign out user' do
+    visit articles_url
+    click_link 'Log in'
+    login_in_user
+    visit articles_url
+    click_link 'Log out'
+    assert_selector 'div', text: 'Signed out successfully.'
+  end
+
+  private
+  def login_in_user
     fill_in 'Email', with: 'jason@email.com'
     fill_in 'Password', with: '123greetings'
     click_button 'Log in'
-
-    assert_selector 'div', text: 'Signed in successfully.'
   end
 
 end
