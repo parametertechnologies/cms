@@ -9,8 +9,11 @@ class ArticlesTest < ApplicationSystemTestCase
   end
 
   test 'creating a new article' do
-    basic_auth!
     visit articles_url
+    click_link 'Log in'
+    login_in_user
+    visit articles_url
+    
     click_link 'New Article'
     fill_in 'Title', with: 'Exciting Article'
     fill_in 'Text', with: 'This is a new exciting article'
@@ -19,7 +22,9 @@ class ArticlesTest < ApplicationSystemTestCase
   end
 
   private
-  def basic_auth!
-    visit 'http://cms:cms@127.0.0.1/articles/new'
+  def login_in_user
+    fill_in 'Email', with: 'jason@email.com'
+    fill_in 'Password', with: '123greetings'
+    click_button 'Log in'
   end
 end
