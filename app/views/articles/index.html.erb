@@ -9,7 +9,9 @@
 
 
 <% @articles.each do |article| %>
-  <h2><%= link_to article.title, article_path(article) %></h2>
-  <p><%= article.title[0..50] %>..</p>
-  <p><%= link_to 'Edit', edit_article_path(article) %></p>
+  <div id="article_<%= article.id %>">
+    <h2><%= link_to article.title, article_path(article) %></h2>
+    <p><%= article.title[0..50] %>..</p>
+    <p><%= link_to 'Edit', edit_article_path(article) if user_signed_in? %></p>
+  </div>
 <% end %>
