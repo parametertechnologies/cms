@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class LoginTest < ApplicationSystemTestCase
+class AuthenticationTest < ApplicationSystemTestCase
 
   test 'login in user' do
     visit articles_url
@@ -10,7 +10,7 @@ class LoginTest < ApplicationSystemTestCase
     assert_selector 'div', text: 'Signed in successfully.'
   end
 
-  test 'sign out user' do
+  test 'log out user' do
     visit articles_url
     click_link 'Log in'
     login_in_user
