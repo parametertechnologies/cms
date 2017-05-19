@@ -32,12 +32,41 @@ class ArticlesTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Amazing Article'
   end
 
+  test 'non-logged in can not edit an article' do
+    visit articles_url
+    click_link 'MyString1'
+    within('#user-section') do
+      assert_selector 'a', {count: 0, text: 'Edit'}
+    end
+  end
+
+  test 'non-admin can not delete an article' do
+    login_in_user
+    visit articles_url
+    click_link 'MyString1'
+    within('#admin-section') do
+      assert_selector 'a', {count: 0, text: 'Delete'}
+    end
+  end
+
+  test 'admin can delte an article' do
+    login_in_user admin: true
+    visit articles_url
+    click_link 'MyString1'
+    within('#admin-section') do
+      assert_selector 'a', text: 'Delete'
+    end
+  end
+
   private
-  def login_in_user
+  def login_in_user(admin: false)
+    email = admin ? 'admin@email.com' :  'jason@email.com'
+    pass = admin ? '125greetings' : '123greetings'
+
     visit articles_url
     click_link 'Log in'
-    fill_in 'Email', with: 'jason@email.com'
-    fill_in 'Password', with: '123greetings'
+    fill_in 'Email', with: email
+    fill_in 'Password', with: pass
     click_button 'Log in'
   end
 end
