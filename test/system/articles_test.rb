@@ -32,6 +32,23 @@ class ArticlesTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Amazing Article'
   end
 
+  test 'non-logged in can not add a comment' do
+    visit articles_url
+    click_link 'MyString1'
+    within('#comment-section') do
+      assert_selector 'h2', {count: 0, text: 'Add a comment'}
+    end
+  end
+
+  test 'non-logged in can not edit a comment' do
+    comment_on_article 'MyString1'
+    visit articles_url
+    click_link 'MyString1'
+    within('#comments-section') do
+      assert_selector 'a', {count: 0, text: 'Edit'}
+    end
+  end
+
   test 'non-logged in can not edit an article' do
     visit articles_url
     click_link 'MyString1'
@@ -49,7 +66,7 @@ class ArticlesTest < ApplicationSystemTestCase
     end
   end
 
-  test 'admin can delte an article' do
+  test 'admin can delete an article' do
     login_in_user admin: true
     visit articles_url
     click_link 'MyString1'
@@ -68,5 +85,15 @@ class ArticlesTest < ApplicationSystemTestCase
     fill_in 'Email', with: email
     fill_in 'Password', with: pass
     click_button 'Log in'
+  end
+
+  def comment_on_article(article_name)
+    login_in_user
+    visit articles_url
+    click_link article_name
+    fill_in 'Commenter', with: 'Joe'
+    fill_in 'Body', with: 'My comment'
+    visit articles_url
+    click_link 'Log out'
   end
 end
