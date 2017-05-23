@@ -1,7 +1,6 @@
 <%= form_for([@article, comment]) do |f| %>
 <p>
-  <%= f.label :commenter %><br/>
-  <%= f.text_field :commenter %>
+  <%= f.text_field :commenter, value: current_user.email, readonly: true  %>
 </p>
 <p>
   <%= f.label :body %><br/>
