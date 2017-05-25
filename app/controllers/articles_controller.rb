@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @highlighted_article = Article.highlighted
   end
 
   def show

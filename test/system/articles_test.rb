@@ -91,7 +91,6 @@ class ArticlesTest < ApplicationSystemTestCase
     login_in_user
     visit articles_url
     click_link article_name
-    fill_in 'Commenter', with: 'Joe'
     fill_in 'Body', with: 'My comment'
     visit articles_url
     click_link 'Log out'

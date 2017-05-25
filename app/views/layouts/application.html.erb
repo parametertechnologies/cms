@@ -2,6 +2,15 @@
 <html>
   <head>
     <title>Cms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.">
+
+    <!-- Start Pure CSS (https://purecss.io) -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css"
+    integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
+    <!-- End Pure CSS -->
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,14 +18,65 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-    
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
+    <div id="layout" class="pure-g">
 
-    <%= yield %>
+      <div class="sidebar pure-u-1 pure-u-md-1-4">
+          <div class="header">
+              <h1 class="brand-title">Carlos Gabaldon</h1>
+              <h2 class="brand-tagline">(Hack Learn Grow)</h2>
+
+              <nav class="nav">
+                  <ul class="nav-list">
+                      <li class="nav-item">
+                          <%= link_to 'Articles', articles_path, class: 'pure-button' %>
+                      </li>
+                      <li class="nav-item">
+                        <% if user_signed_in? %>
+                          <%= link_to 'New Article', new_article_path,
+                            class: 'pure-button' %>
+                        <% end %>
+                        </li>
+                      </li>
+                      <li class="nav-item">
+                          <%= link_to 'About', home_path, class: 'pure-button' %>
+                      </li>
+                      <li class="nav-item">
+                          <% if user_signed_in? %>
+                            <%= link_to 'Log out', destroy_user_session_path,
+                              class: 'pure-button', method: :delete %>
+                          <% else %>
+                            <%= link_to 'Log in', new_user_session_path,
+                              class: 'pure-button' %>
+                          <% end %>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+
+      <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+          <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+          <% end %>
+
+          <% if flash[:alert] %>
+            <div class="alert"><%= flash[:alert] %></div>
+          <% end %>
+
+          <%= yield %>
+
+          <div class="footer">
+              <div class="pure-menu pure-menu-horizontal">
+                  <ul>
+                      <li class="pure-menu-item"><a href="http://carlosgabaldon.com" class="pure-menu-link" target="_new">About</a></li>
+                      <li class="pure-menu-item"><a href="https://www.linkedin.com/in/carlosgabaldon/" class="pure-menu-link" target="_new">LinkedIn</a></li>
+                      <li class="pure-menu-item"><a href="https://github.com/CarlosGabaldon" class="pure-menu-link" target="_new">GitHub</a></li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
