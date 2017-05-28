@@ -2,10 +2,15 @@ require 'application_system_test_case'
 
 class ArticlesTest < ApplicationSystemTestCase
 
-  test 'listing articles' do
+  test 'listing recent articles' do
     visit articles_url
     assert_selector 'h2', text: 'MyString1'
     assert_selector 'h2', text: 'MyString2'
+  end
+
+  test 'listing highlighted articles' do
+    visit articles_url
+    assert_selector 'h2', text: 'MyString3'
   end
 
   test 'creating a new article' do

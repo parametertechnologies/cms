@@ -7,3 +7,13 @@ one:
 two:
   title: MyString2
   text: MyText
+
+three:
+  title: MyString3
+  text: MyText
+  highlight: true
+
+four:
+  title: MyString4
+  text: MyText
+  highlight: true

@@ -1,27 +1,10 @@
-<!-- pinned article -->
-<% if @highlighted_article %>
+<!-- highlighted articles -->
+<% if @highlighted_articles.length > 0 %>
   <div class="posts">
-      <h1 class="content-subhead">Highlighed Article</h1>
-      <section class="post">
-          <header class="post-header">
-              <img width="48" height="48" alt="Carlos&#x27;s avatar" class="post-avatar"
-                src="https://secure.gravatar.com/avatar/9f22a8f13769b4ad434bbf5694d9b718?s=100&d=identicon&r=g">
-
-              <h2 class="post-title"><%= link_to @highlighted_article.title, article_path(@highlighted_article) %></h2>
-
-              <p class="post-meta">
-                  By <a href="#" class="post-author">Carlos Gabaldon</a> under
-                  <a class="post-category post-category-design" href="#">CSS</a>
-                  <a class="post-category post-category-pure" href="#">Pure</a>
-              </p>
-          </header>
-
-          <div class="post-description">
-              <p>
-                <%= @highlighted_article.text[0..100] %>
-              </p>
-          </div>
-      </section>
+      <h1 class="content-subhead">Highlighed Articles</h1>
+      <% @highlighted_articles.reverse_each do |article| %>
+        <%= render article %>
+    <% end %>
   </div>
 <% end %>
 
@@ -30,23 +13,6 @@
 <div class="posts">
   <h1 class="content-subhead">Recent Articles</h1>
   <% @articles.reverse_each do |article| %>
-        <section class="post" id="article_<%= article.id %>">
-            <header class="post-header">
-                <h2 class="post-title"><%= link_to article.title, article_path(article) %></h2>
-
-                <p class="post-meta">
-                    By <a href="#" class="post-author">Carlos Gabaldon</a> under
-                    <a class="post-category post-category-design" href="#">CSS</a>
-                    <a class="post-category post-category-pure" href="#">Pure</a>
-                </p>
-            </header>
-
-            <div class="post-description">
-                <p>
-                  <%= article.text[0..100] %>..
-                </p>
-                <p><%= link_to 'Edit', edit_article_path(article) if user_signed_in? %></p>
-            </div>
-        </section>
+      <%= render article %>
   <% end %>
 </div>

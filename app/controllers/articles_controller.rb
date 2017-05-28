@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all
-    @highlighted_article = Article.highlighted
+    @articles = Article.recent
+    @highlighted_articles = Article.highlighted
   end
 
   def show
@@ -47,6 +47,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :highlight)
   end
 end
