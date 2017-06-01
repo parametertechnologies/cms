@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   devise_for :users
   resources :articles do
     resources :comments
   end
 
-  root 'home#index',  as: :home
+  get 'profile', to: 'profiles#show'
+  root 'articles#index',  as: :home
 
 end

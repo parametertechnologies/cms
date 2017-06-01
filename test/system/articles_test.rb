@@ -15,7 +15,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test 'creating a new article' do
     login_in_user
-    visit articles_url
 
     click_link 'New Article'
     fill_in 'Title', with: 'Exciting Article'
@@ -26,7 +25,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test 'editing a article' do
     login_in_user
-    visit articles_url
     article = articles(:one)
     within("#article_#{article.id}") do
       click_link 'Edit'
@@ -64,7 +62,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test 'non-admin can not delete an article' do
     login_in_user
-    visit articles_url
     click_link 'MyString1'
     within('#admin-section') do
       assert_selector 'a', {count: 0, text: 'Delete'}
@@ -73,7 +70,6 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test 'admin can delete an article' do
     login_in_user admin: true
-    visit articles_url
     click_link 'MyString1'
     within('#admin-section') do
       assert_selector 'a', text: 'Delete'
@@ -85,7 +81,7 @@ class ArticlesTest < ApplicationSystemTestCase
     email = admin ? 'admin@email.com' :  'jason@email.com'
     pass = admin ? '125greetings' : '123greetings'
 
-    visit articles_url
+    visit home_url
     click_link 'Log in'
     fill_in 'Email', with: email
     fill_in 'Password', with: pass

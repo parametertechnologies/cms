@@ -3,7 +3,7 @@ require 'application_system_test_case'
 class AuthenticationTest < ApplicationSystemTestCase
 
   test 'login in user' do
-    visit articles_url
+    visit home_url
     click_link 'Log in'
     assert_selector 'h2', text: 'Log in'
     login_in_user
@@ -11,10 +11,9 @@ class AuthenticationTest < ApplicationSystemTestCase
   end
 
   test 'log out user' do
-    visit articles_url
+    visit home_url
     click_link 'Log in'
     login_in_user
-    visit articles_url
     click_link 'Log out'
     assert_selector 'div', text: 'Signed out successfully.'
   end
