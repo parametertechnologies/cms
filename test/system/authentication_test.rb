@@ -17,12 +17,4 @@ class AuthenticationTest < ApplicationSystemTestCase
     click_link 'Log out'
     assert_selector 'div', text: 'Signed out successfully.'
   end
-
-  private
-  def login_in_user
-    fill_in 'Email', with: 'jason@email.com'
-    fill_in 'Password', with: '123greetings'
-    click_button 'Log in'
-  end
-
 end

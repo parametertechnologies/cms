@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
-
   devise_for :users
   resources :articles do
     resources :comments
   end
 
-  get 'profile', to: 'profiles#show'
+  resource :profile, only: [:show, :edit]
   root 'articles#index',  as: :home
 
 end
