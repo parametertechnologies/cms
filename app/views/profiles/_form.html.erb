@@ -1,0 +1,35 @@
+<%= form_for(@profile) do |f| %>
+
+<% if @profile.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@profile.errors.count, "error") %> prohibited
+       this article from being saved:
+     </h2>
+     <ul>
+       <% @profile.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+  <% end %>
+
+  <p>
+    <%= f.label :first_name %><br/>
+    <%= f.text_field :first_name %>
+  </p>
+
+  <p>
+    <%= f.label :last_name %><br/>
+    <%= f.text_field :last_name %><br/>
+  </p>
+
+  <p>
+    <%= f.label :bio %><br/>
+    <%= f.text_area :bio %><br/>
+  </p>
+
+  <p>
+    <%= f.submit %> <%= link_to 'Cancel', profile_path %>
+  </p>
+<% end %>
