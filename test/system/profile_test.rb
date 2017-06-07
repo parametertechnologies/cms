@@ -8,6 +8,10 @@ class ProfileTest < ApplicationSystemTestCase
   end
 
   test 'showing user profile for logged in user' do
+    ### need to modify this behavior so if the logged in user owns this
+    ## profile than they can edit the profile..
+    ## todo also add a cms_configuration model and table that contains:
+    ## cms_title, cms_tagline, cms_owner_user (has_one relationship to user)
     login_in_user
     visit profile_url
     assert_selector 'a', text: 'Edit your profile'

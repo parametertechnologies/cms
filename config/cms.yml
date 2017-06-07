@@ -1,0 +1,10 @@
+production:
+  environment: production
+  cms_title: Carlos Gabaldon
+  cms_tagline:  (Hack Learn Grow)
+  cms_owner_email: cgabaldon@gmail.com
+development:
+  environment: sandbox
+  cms_title: Carlos Gabaldon
+  cms_tagline:  (Hack Learn Grow)
+  cms_owner_email: cgabaldon@gmail.com
