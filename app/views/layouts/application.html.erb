@@ -22,8 +22,8 @@
 
       <div class="sidebar pure-u-1 pure-u-md-1-4">
           <div class="header">
-              <h1 class="brand-title"><%= Rails.configuration.cms['cms_title'] %></h1>
-              <h2 class="brand-tagline"><%= Rails.configuration.cms['cms_tagline'] %></h2>
+              <h1 class="brand-title"><%= SiteConfiguration.cms.try(:title) %></h1>
+              <h2 class="brand-tagline"><%= SiteConfiguration.cms.try(:tagline) %></h2>
 
               <nav class="nav">
                   <ul class="nav-list">

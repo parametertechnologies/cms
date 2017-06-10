@@ -11,9 +11,5 @@ module Cms
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
-    # Application configuration stored in config/cms.yml
-    # Access configuration values: # Rails.configuration.cms['cms_title']
-    config.cms = config_for(:cms)
-
   end
 end
