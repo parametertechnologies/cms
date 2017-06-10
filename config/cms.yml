@@ -2,14 +2,14 @@ production:
   environment: production
   cms_title: Carlos Gabaldon
   cms_tagline:  (Hack Learn Grow)
-  cms_owner_email: cgabaldon@gmail.com
+  cms_owner_email: admin_user@mail.com
 test:
   environment: test
   cms_title: Carlos Gabaldon
   cms_tagline:  (Hack Learn Grow)
-  cms_owner_email: cgabaldon@gmail.com
+  cms_owner_email: admin_user@mail.com
 development:
   environment: sandbox
   cms_title: Carlos Gabaldon
   cms_tagline:  (Hack Learn Grow)
-  cms_owner_email: cgabaldon@gmail.com
+  cms_owner_email: admin_user@mail.com

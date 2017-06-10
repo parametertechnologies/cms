@@ -1,43 +1,10 @@
+<span><%= link_to 'Edit your profile', edit_profile_path if signed_in? && current_user.try(:admin?) %></span>
 <% if @profile %>
-  <h1><%= @profile.first_name %></h1>
-  <span><%= link_to 'Edit your profile', edit_profile_path if signed_in? %></span>
+  <h1><%= @profile.full_name %></h1>
   <div>
-    <%= @profile.bio %>
+    <%= @profile.bio.html_safe %>
 
 <% else %>
   <span>No profile defined..</span>
-  <h1>Carlos Gabaldon</h1>
-  <span><%= link_to 'Edit your profile', edit_profile_path if signed_in? %></span>
-
-  <p>
-  Senior leader, developer, and agile coach with experience building high quality products that provide value.
-  </p>
-
-  <h2>Experience</h2>
-
-  <ul>
-    <li>17 years of hands on software development experience</li>
-    <li>12 years of software development management experience</li>
-  </ul>
-
-  <h2>Domains</h2>
-  <ul>
-    <li>Lead Generation</li>
-    <li>Mobility</li>
-    <li>Daily Deals</li>
-    <li>Hosting</li>
-    <li>Online Education</li>
-    <li>Supply Chain</li>
-    <li>Retail Systems</li>
-    <li>Travel Systems</li>
-    <li>OCR Systems</li>
-  </ul>
-
-  <h2>Languages</h2>
-  <ul>
-    <li>Ruby</li>
-    <li>Python</li>
-    <li>Java</li>
-  </ul>
 
 <% end %>
