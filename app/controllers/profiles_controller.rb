@@ -21,9 +21,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile
-    ## To do - build CMS configuration setup page to store this info. Instead
-    ## of storying in the Rails configuration
-    @user ||= User.find_by(email: Rails.configuration.cms['cms_owner_email'])
+    @user ||=  SiteConfiguration.cms.try(:user)
     if @user
       @user.profile ? @user.profile : @user.create_profile
     else

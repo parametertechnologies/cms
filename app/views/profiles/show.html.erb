@@ -2,7 +2,7 @@
 <% if @profile %>
   <h1><%= @profile.full_name %></h1>
   <div>
-    <%= @profile.bio.html_safe %>
+    <%= @profile.bio.try(:html_safe) %>
 
 <% else %>
   <span>No profile defined..</span>

@@ -17,9 +17,7 @@ $ createuser --createdb --login -P cms
 Enter password for new role: cms
 Enter it again: cms
 
-$ rails db:create
-$ rails db:migrate
-$ rails db:test:prepare
+$ rails db:setup
 ```
 
 ## Test Setup
