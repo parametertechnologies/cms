@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:show, :edit, :update]
+  resources :site_configurations
   root 'articles#index',  as: :home
 
 end

@@ -8,7 +8,7 @@ class ProfileTest < ApplicationSystemTestCase
   end
 
   test 'showing edit profile link for logged in admin user' do
-    login_in_user admin: true # todo change admin attribute to site_owner
+    login_in_user admin: true 
     visit profile_url
     assert_selector 'a', text: 'Edit your profile'
   end
@@ -24,6 +24,7 @@ end
 ## Notes
 # Change Profile (Controller, Model, etc) to About
 # Change Admin role to Site_Owner (should be only one site owner)
-# Create a configure CMS section so Site owner can configure title, tag-line, etc
-# User should have a 1:1 relationship to cms configuration model for the site_owner relationship
+# Create a Site Configuration page so Site owner can configure title, tag-line, etc
+## - created model and seeding during setup.
+## - add page for editing the SiteConfiguration
 # Once markdown support is add, remove html_safe from app/views/profiles/show.html.erb
