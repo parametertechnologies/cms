@@ -4,7 +4,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     @site_config = SiteConfiguration.create(key: 'cms',
-      title: 'My blog', tagline: 'cool site', user: users(:admin_user))
+      settings: {title: 'My blog', tagline: 'cool site'}.to_json, user: users(:admin_user))
   end
 
   test 'should get show' do

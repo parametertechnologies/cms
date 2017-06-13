@@ -44,8 +44,7 @@ ActiveRecord::Schema.define(version: 20170610013553) do
 
   create_table "site_configurations", force: :cascade do |t|
     t.string "key"
-    t.string "title"
-    t.string "tagline"
+    t.string "settings"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

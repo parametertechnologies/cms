@@ -7,7 +7,7 @@ class SiteConfigurationsControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin_user)
     sign_in @admin
     @site_config = SiteConfiguration.create(key: 'cms',
-      title: 'Blog', tagline: 'cool', user: @admin)
+      settings: {title: 'Blog', tagline: 'cool'}.to_json , user: @admin)
   end
 
   teardown do

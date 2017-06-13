@@ -5,8 +5,7 @@ user = User.find_or_create_by!(email: 'admin_user@mail.com') do |user|
       end
 
 site_config = SiteConfiguration.find_or_create_by(key: 'cms') do |site_config|
-                site_config.title = 'Carlos Gabaldon'
-                site_config.tagline= '(Hack Learn Grow)'
+                site_config.settings = {title: 'Carlos Gabaldon', tagline: '(Hack Learn Grow)'}.to_json
                 site_config.user = user
               end
 
