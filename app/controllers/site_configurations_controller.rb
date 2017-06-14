@@ -3,6 +3,7 @@ class SiteConfigurationsController < ApplicationController
   before_action :admin_user?
 
   def index
+    @site_configurations = SiteConfiguration.all
   end
 
   def show

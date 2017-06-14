@@ -1,2 +1,4 @@
 <h1>Configure Site</h1>
-<p>Find me in app/views/site_configurations/index.html.erb</p>
+<% @site_configurations.each do |site_configuration| %>
+  <h2><%= site_configuration.key %> </h2>
+<% end %>
