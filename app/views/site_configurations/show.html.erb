@@ -1,2 +1,6 @@
-<h1>SiteConfigurations#show</h1>
-<p>Find me in app/views/site_configurations/show.html.erb</p>
+<h1><%= @site_configuration.key %> </h1>
+
+<h3>Settings</h3>
+<% SiteConfiguration.settings_hash(@site_configuration).each do |setting, value| %>
+  <p><%= setting %>: <%= value %></p>
+<% end %>

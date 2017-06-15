@@ -7,6 +7,7 @@ class SiteConfigurationsController < ApplicationController
   end
 
   def show
+    @site_configuration = SiteConfiguration.find(params[:id])
   end
 
   def new

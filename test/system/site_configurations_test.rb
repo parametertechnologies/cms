@@ -18,4 +18,10 @@ class SiteConfigurationTest < ApplicationSystemTestCase
     assert_selector 'h2', text: 'cms'
   end
 
+  test 'viewing site configuration' do
+    visit site_configurations_url
+    click_link 'cms'
+    assert_selector 'p', text: 'Cool Blog'
+    assert_selector 'p', text: 'Having fun'
+  end
 end

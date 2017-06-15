@@ -1,4 +1,4 @@
 <h1>Configure Site</h1>
 <% @site_configurations.each do |site_configuration| %>
-  <h2><%= site_configuration.key %> </h2>
+  <h2 class="post-title"><%= link_to site_configuration.key, site_configuration_path(site_configuration) %> </h2>
 <% end %>
