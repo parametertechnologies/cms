@@ -1,6 +1,7 @@
 <h1><%= @site_configuration.key %> </h1>
 
 <h3>Settings</h3>
+<span><%= link_to 'Edit', edit_site_configuration_path(@site_configuration) if current_user.try(:admin?) %>
 <% SiteConfiguration.settings_hash(@site_configuration).each do |setting, value| %>
   <p><%= setting %>: <%= value %></p>
 <% end %>

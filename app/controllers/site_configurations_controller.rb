@@ -17,6 +17,7 @@ class SiteConfigurationsController < ApplicationController
   end
 
   def edit
+    @site_configuration = SiteConfiguration.find(params[:id])
   end
 
   def update
