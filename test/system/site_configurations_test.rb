@@ -28,6 +28,9 @@ class SiteConfigurationTest < ApplicationSystemTestCase
   test 'editing site configuration' do
     visit site_configuration_url(@site_config)
     click_link 'Edit'
-    assert_selector 'h1', text: 'Edit cms'
+
+    fill_in 'site_configuration[settings][title]', with: 'My Very Cool Blog'
+    click_button 'Update Site configuration'
+    assert_selector 'p', text: 'My Very Cool Blog'
   end
 end

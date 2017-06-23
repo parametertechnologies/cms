@@ -1,2 +1,30 @@
 <h1>Edit <%=@site_configuration.key %></h1>
-<p>Find me in app/views/site_configurations/edit.html.erb</p>
+
+<%= form_for(@site_configuration) do |f| %>
+  <% if @site_configuration.errors.any? %>
+     <div id="error_explanation">
+       <h2>
+         <%= pluralize(@profile.errors.count, "error") %> prohibited
+         this article from being saved:
+       </h2>
+       <ul>
+         <% @site_configuration.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+  <% end %>
+
+  <%= f.fields_for :settings do |settings_fields| %>
+    <% @site_configuration.settings_hash.each do |k, v| %>
+      <%= settings_fields.label k %>
+      <%= settings_fields.text_field k, value: v %>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= f.submit %>
+    <%= link_to 'Cancel', site_configuration_path(@site_configuration) %>
+  </p>
+
+<% end %>
